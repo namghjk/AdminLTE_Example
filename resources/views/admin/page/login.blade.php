@@ -48,13 +48,13 @@
                             <button type="submit" class="btn btn-primary btn-block">Sign In</button>
                         </div>
                         <!-- /.col -->
-                        {{-- <div class="col-12">
+                         <div class="col-12">
                             <div class="w-100 mt-3">
                                 <label for="Register">
-                                   <a  href="{{route('register')}}"  class="text-primary "> Không có tài khoản? Đăng ký ngay! </a>
+                                   <a  href="{{route('register')}}"  class="text-primary "> Don't have an account? Register now </a>
                                 </label>
                             </div>
-                        </div> --}}
+                        </div> 
                     </div>
                     @csrf
                 </form>
