@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\loginController;
+use App\Http\Controllers\Admin\logoutController;
+use App\Http\Controllers\mainController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.page.home');
+
+
+Route::get('/admin/login', [loginController::class, 'index'])->name('login');
+Route::post('/admin/login/store', [loginController::class, 'store'])->name('loginPost');
+
+
+Route::prefix('admin')->group(function () {
+    Route::get('/', [mainController::class, 'index'])->name('admin');
+    Route::get('/logout', [logoutController::class, 'logout'])->name('logout');
 });
