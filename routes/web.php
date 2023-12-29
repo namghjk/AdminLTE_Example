@@ -22,8 +22,12 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/admin/login', [loginController::class, 'index'])->name('login')->middleware(RedirectIfAuthenticated::class);
-Route::post('/admin/login/store', [loginController::class, 'store'])->name('loginPost');
+
+Route::middleware(['preventBackHistory'])->group(function () {
+    Route::get('/admin/login', [loginController::class, 'index'])->name('login')->middleware(RedirectIfAuthenticated::class);
+    Route::post('/admin/login/store', [loginController::class, 'store'])->name('loginPost');
+});
+
 
 Route::get('/admin/register', [registerController::class, 'index'])->name('register')->middleware(RedirectIfAuthenticated::class);
 Route::post('admin/register/store', [registerController::class, 'store'])->name('registerPost');

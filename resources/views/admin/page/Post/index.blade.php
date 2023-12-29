@@ -43,7 +43,7 @@
                             <a href="{{ route('editPost', $post->id) }}" class="btn btn-outline-primary ">Update</a>
                         </td>
                         <td>
-                            <form action="{{ route('deleteImage', $post->id) }}" method="POST">
+                            <form action="{{ route('deletePost', $post->id) }}" method="POST">
                                 <button class="btn btn-outline-danger " type="submit"
                                     onclick="return confirm('Are you sure?');">Delete</button>
 
