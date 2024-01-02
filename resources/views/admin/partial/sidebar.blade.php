@@ -38,26 +38,38 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Post
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
+                    @hasanyrole('Admin|Admin edit')
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Post
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                    @endhasanyrole
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('newPost') }}" class="nav-link {{ Request::route()->getName() == 'newPost' ? 'active' : '' }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add new post</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('showAll') }}" class="nav-link {{ Request::route()->getName() == 'showAll' ? 'active' : '' }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>All post</p>
-                            </a>
-                        </li>
+                        @hasanyrole('Admin')
+                            <li class="nav-item">
+                                <a href="{{ route('newPost') }}"
+                                    class="nav-link {{ Request::route()->getName() == 'newPost' ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add new post</p>
+                                </a>
+                            </li>
+                        @endhasanyrole
+
+                        @role('Admin edit|Admin')
+                            <li class="nav-item">
+                                <a href="{{ route('showAll') }}"
+                                    class="nav-link {{ Request::route()->getName() == 'showAll' ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>All post</p>
+                                </a>
+                            </li>
+                        @endrole
+
+
+
                     </ul>
                 </li>
             </ul>
